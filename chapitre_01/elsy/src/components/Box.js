@@ -1,18 +1,28 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
 
-
-const boxStyle = {
-    fontSize: 100,
-    color: 'black'
+const css = {
+    fontSize: "80rem",
+    color: "black",
 }
+
 class Box extends React.Component {
     render() {
         return (
             <div className="box col-sm-3 col-6">
-                <span className="material-icons" style={boxStyle}>{this.props.icon} {this.props.color} {this.props.value} {this.props.unit}</span>
+                <span 
+                    className="material-icons" 
+                        style={{
+                            color: 1
+                                this.props.color === undefined 
+                                    ? "blue"
+                                    : this.props.color,
+                            fontSize: 100,
+                }}>
+                    {this.props.icon}
+                </span>
+                <p>{this.props.value} {this.props.unit}</p>
             </div>
-        );
+        )
     }
 }
 

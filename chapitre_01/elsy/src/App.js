@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Box from "./components/Box";
+import Box from "./Components/Box";
 import './styles/global.css';
 
 const tempMin =  -2;
@@ -21,10 +21,27 @@ class App extends React.Component {
           <p>Temperature : {tempMin}</p>
           <p>Steps : {stepsMin}</p>
 
-          <Box text="Water"  style={{icon : "local_drink"} + {color : "#3A85FF"} + {value : 1.5} + {unit : "L"}}/>{this.props.text}
-          <Box text="Steps" />
-          <Box text="Heart" />
-          <Box text="Temperature" />
+          <div className="row">
+            <Box 
+              icon = "local_drink"
+              color = "#3A85FF"
+              value = (1.5)
+              unit = "L"
+            />
+            <Box 
+              icon = "directions_walk"
+              color = "black"
+              valu = (3800)
+              unit = "step"
+            />
+             <Box 
+              icon = "favorite"
+              color = "red"
+              valu = (120)
+              unit = "step"
+            />
+            <Box icon ="wb_sunny" value=(-10) unit="°C"/>
+          </div>
           
         </div>
       </div>
