@@ -25,24 +25,28 @@ class App extends React.Component {
             <Box 
               icon = "local_drink"
               color = "#3A85FF"
-              value = (1.5)
+              value = {1.5}
               unit = "L"
             />
             <Box 
               icon = "directions_walk"
               color = "black"
-              valu = (3800)
-              unit = "step"
+              valu = {3000}
+              unit = "steps"
             />
              <Box 
               icon = "favorite"
               color = "red"
-              valu = (120)
-              unit = "step"
+              valu = {120}
+              unit = "bpm"
             />
-            <Box icon ="wb_sunny" value=(-10) unit="°C"/>
+            <Box 
+              icon ="wb_sunny" 
+              color = "yellow"
+              value= {-10} 
+              unit="°C"
+            />
           </div>
-          
         </div>
       </div>
     );

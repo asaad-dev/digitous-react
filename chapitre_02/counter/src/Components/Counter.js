@@ -1,25 +1,32 @@
 import React from 'react';
 
-class Counter extends React.Component { 
+const btnRed = {
+    backgroundColor: "red",
+};
 
-    constructor() {
-        super();
-    
-        this.state = {
-          count: 0,
-        };
-      }
+const btnGreen = {
+    backgroundColor: "green",
+}
 
+
+class Counter extends React.Component {
     render() {
         return (
             <div>
-                <h2>{this.state.count}</h2>
-
-                <button onClick={() => this.setState(this.state.count - 1)}></button>et
-                <button onClick={() => this.setState(this.state.count + 1)}></button>
-                
+                <h1>Counter</h1> 
+                <h2>{this.props.count}</h2>
+                <button
+					onClick={this.props.addFunction}
+					style={btnRed}
+				>+
+				</button>
+				<button
+					onClick={this.props.substractFunction}
+					style={btnGreen}
+				>-
+				</button>
             </div>
-        )
+        );
     }
 }
 

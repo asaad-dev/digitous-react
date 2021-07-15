@@ -12,12 +12,13 @@ class Box extends React.Component {
                 <span 
                     className="material-icons" 
                         style={{
-                            color: 1
+                            color: 
                                 this.props.color === undefined 
                                     ? "blue"
                                     : this.props.color,
                             fontSize: 100,
-                }}>
+                        }}
+                >
                     {this.props.icon}
                 </span>
                 <p>{this.props.value} {this.props.unit}</p>
