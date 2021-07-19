@@ -38,10 +38,10 @@ class App extends React.Component {
     return (
       <div>
         <Counter
-					count={this.state.count}
-          addFunction={this.addFunction}
-          substractFunction={this.substractFunction}
-				/>          
+			count={this.state.count}
+          	addFunction={this.addFunction}
+          	substractFunction={this.substractFunction}
+		/>          
       </div>
     );
   }
