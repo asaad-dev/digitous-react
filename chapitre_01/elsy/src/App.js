@@ -12,15 +12,40 @@ const stepsMin = 0;
 const stepsMax = 50000;
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.onHeartChange = this.onHeartChange.bind(this);
+
+    this.state = {
+      water: 0,
+      heart: 120,
+      temperature: -10,
+      steps: 3000
+    }
+  }
+
+  onHeartChange(e){
+    this.setState(
+      { water: e.target.value}
+    )
+  }
+
   render() {
+    if(this.state.water) {
+      return (
+        <input 
+          type="range"
+          min="0"
+          max="100"
+          value={this.state.value}
+          onInput={this.onHeartChange}
+        />
+      )
+    } 
+    
     return (
       <div className="container-fluid">
         <div className="row">
-
-          <p>Heart : {heartMin}</p>
-          <p>Temperature : {tempMin}</p>
-          <p>Steps : {stepsMin}</p>
-
           <div className="row">
             <Box 
               icon = "local_drink"

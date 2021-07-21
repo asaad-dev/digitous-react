@@ -23,7 +23,7 @@ class Box extends React.Component {
                 </span>
                 <p>{this.props.value} {this.props.unit}</p>
             </div>
-        )
+        );
     }
 }
 
