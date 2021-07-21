@@ -6,7 +6,7 @@ class List extends React.Component {
             <div>
                 List
             </div>
-        )
+        );
     }
 
 }

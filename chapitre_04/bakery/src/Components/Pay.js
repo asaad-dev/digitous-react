@@ -6,7 +6,7 @@ class Pay extends React.Component {
             <div>
                 Pay
             </div>
-        )
+        );
     }
 
 }

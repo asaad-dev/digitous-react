@@ -7,8 +7,6 @@ import List from './Components/List';
 import Pay from './Components/Pay';
 import Button from './Components/Button';
 
-
-
 class App extends React.Component {
   constructor() {
     super();
@@ -19,17 +17,53 @@ class App extends React.Component {
     };
   }
 
+  selectAdd = (e) => {
+		this.setState((prevState) => {
+			return this.activeTab({
+				...prevState,
+				items: e.target.value,
+			});
+		});
+	};
+
+  selectList = (e) => {
+    this.setState((prevState) => {
+      return this.activeTab({
+        ...prevState,
+        items: e.target.value,
+      })
+    })
+  }
+
+  selectPay = (e) => {
+    this.setState((prevState) => {
+      return this.activeTab({
+        ...prevState,
+        items: e.target.value,     
+      })
+    })
+  }
+
+
   render() {
     return (
       <div className="container">
         <button 
-          name="Add"
+          name="add"
+          value={this.state.items}
+          onChange={this.selectAdd}
         />
+
         <button 
-          name="List"
+          name="list"
+          value={this.state.items}
+          onChange={this.selectList}
         />
+
         <button 
-          name="Pay"
+          name="pay"
+          value={this.state.items}
+          onChange={this.selectPay}
         />
       </div>
     )
