@@ -3,36 +3,47 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({value: e.target.value});
+  }
 
   handleSubmit(e) {
-    e.preventDefault();
-      return (
-        <div className="bg-secondary">
-          <h2>Form Submitted</h2>
-        </div>
-      )
+    return (
+      <div className="bg-secondary">
+        <h2>Form Submitted</h2>
+        e.preventDefault();
+      </div>
+    )
   }
   
   
   renderForm() {
     return (
-      <form onChange={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
           <div>
-            <label for="email" className="form-label">Email Address</label>
-            <input type="email" className="form-control" id="email"></input>
+            <label className="form-label">Email Address</label>
+            <input type="email" className="form-control" value={this.state.value} onChange={this.handleChange} />
           </div>
 
           <div>
-            <label for="email" className="form-label">Password</label>
-            <input type="password" className="form-control" id="email" required></input>
+            <label className="form-label">Password</label>
+            <input className="form-control" type="password" required />
           </div>
 
           <div className="my-3 form-check">
-            <input type="checkbox" className="form-check-input" id="inputCheck"></input>
+            <input type="checkbox" className="form-check-input" value={this.state.value} onChange={this.handleChange} />
             <label for="inputCheck" className="form-check-label">Remember me</label>
           </div>
 
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <input className="btn btn-primary" type="submit" value="Submit" />
       </form>
     )
   }
