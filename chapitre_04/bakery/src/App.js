@@ -17,55 +17,57 @@ class App extends React.Component {
     };
   }
 
-  selectAdd = (e) => {
-		this.setState((prevState) => {
-			return this.activeTab({
-				...prevState,
-				items: e.target.value,
-			});
-		});
-	};
+ handleChangeTab = (e) => {
+   this.setState((prevState) => {
+     return {
+       ...prevState,
+       activeTab: e.target.name.toLowerCase(),
+     };
+   });
+ };
 
-  selectList = (e) => {
-    this.setState((prevState) => {
-      return this.activeTab({
-        ...prevState,
-        items: e.target.value,
-      })
-    })
-  }
+ handleAddItem = (productName, price) => {
+   this.setState((prevState) => {
+     return {
+       ...prevState,
+       items: [
+         ...prevState.items,
+         {
+           productName: productName, 
+           price: price,
+          }
+       ],
+     };
+   });
+ }
 
-  selectPay = (e) => {
-    this.setState((prevState) => {
-      return this.activeTab({
-        ...prevState,
-        items: e.target.value,     
-      })
-    })
-  }
-
+ // Render functions 
+ renderTab = () => {
+   switch (this.state.activeTab) {
+    case "add":
+       return <Add addItem={this.handleAddItem}/>;
+    case "list":
+      return <List items={this.state.items} />;
+    case "pay":
+      return <Pay items={this.state.items} />;
+    default: 
+      return <p>505 not found</p>;
+   }
+ };
 
   render() {
     return (
-      <div className="container">
-        <button 
-          name="add"
-          value={this.state.items}
-          onChange={this.selectAdd}
-        />
+        <div className="container">
+          <div className="row">
+            <Button onClick={this.handleCahngeTab}>Add</Button>
+            <Button onClick={this.handleChangeTab}>List</Button>
+            <Button onClick={this.handleChangeTab}>Pay</Button>
+          </div>
 
-        <button 
-          name="list"
-          value={this.state.items}
-          onChange={this.selectList}
-        />
-
-        <button 
-          name="pay"
-          value={this.state.items}
-          onChange={this.selectPay}
-        />
-      </div>
+          <div className="row">
+            {this.renderTab()}
+          </div>
+        </div>
     )
   }
 }

@@ -6,10 +6,10 @@ class Button extends React.Component {
         return (
             <div>
                 <button 
-                    type="button" 
-                    className="btn btn-outline-primary">
-                    {this.props.isSelected}
-                    {this.props.onClick}
+                    className="btn btn-outline-primary"
+                    onClick={this.props.onClick}
+                    name={this.props.children}
+                    >                    
                     {this.props.children}
                 </button>
             </div>

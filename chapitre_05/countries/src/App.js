@@ -17,55 +17,54 @@ class App extends React.Component {
       region: '',
     };
   }
+componentDidMount() {
+  this.getCountry("france")
+}
 
-  componentDidMount() {
-    fetch("https://restcountries.eu/rest/v2/name/france")
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          countryName: data,
-          countryCapital: data.capital,
-          countryFlag: data.flag,
-          countryPopulations: data.populations,
-          countryRegion: data.region,
-        });
-      });
-  }
+getCountry(country) { 
+  const url = "https://restcountries.eu/rest/v2/name/france" + country
 
-  getCountry(country) {
-    fetch("https://restcountries.eu/rest/v2/name/france")
-    .then((res) => res.json())
-    .then((country) => {
-      this.setState({country: country});
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    this.setState({
+      name: data.name,
+      capital: data.capital,
+      flag: data.flag,
+      popluation: data.popluation,
+      region: data.region,
     })
-  }
+  })
+}
 
-  render() {
-    return (
-      <div>
-        <h1>Country selector</h1>
-
-        <button 
-          name="France"
-          onChange={this.country}
-        />
-
-        <button 
-          name="Brazil"
-          onChange={this.country}
-        />
-
-        <button 
-          name="Croatia"
-          onChange={this.country}
-        />
-
-        {/* {this.state.countryName.map((name) => (
-          <p key={name.id}>{name.name}</p>
-        ))} */}
+render() {
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="offset-4 col-4">
+          <h1 className="text-center">Countries</h1>
+        </div>
       </div>
-    )
-  }
+
+      <div className="row m-5">
+        <div className="offset-3 col-2 text-center">
+          <Button onClick={() => this.getCountry("france")}>France</Button>
+          <Button onClick={() => this.getCountry("brazil")}>Brazil</Button>
+          <Button onClick={() => this.getCountry("croatia")}>Croatia</Button>
+        </div>
+      </div>
+
+      <Card 
+        name={name}
+        capital={capital}
+        flag={flag}
+        population={population}
+        region={region}
+      />
+    </div>
+  )
+}
+ 
 }
 
 export default App;
