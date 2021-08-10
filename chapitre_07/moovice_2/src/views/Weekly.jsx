@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Card from '../components/Card'
+import { getLatestMovies } from '../utils/Api'
 
-class Weekly extends React.Component {
+class Weekly extends Component {
+
     state = {
-        movies: [],
+        movies: []
     }
 
     componentDidMount() {
@@ -17,7 +20,7 @@ class Weekly extends React.Component {
 
     render() {
         return (
-             <div className="container">
+            <div className="container">
                 <h1 className="text-center">Weekly</h1>
 
                 <div className="row">

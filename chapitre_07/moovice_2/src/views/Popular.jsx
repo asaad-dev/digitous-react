@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Card from '../components/Card'
 
-class Weekly extends React.Component {
+class Popular extends Component {
+
     state = {
-        movies: [],
+        movies: []
     }
 
     componentDidMount() {
-        getLatestMovies()
+        const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e441f8a3a151d588a4932d2c5d310769"
+
+        fetch(url)
+            .then(response => response.json())
             .then(data => {
+                console.log("data in popular component did mount", data);
 
                 this.setState({
                     movies: data.results
@@ -17,8 +23,8 @@ class Weekly extends React.Component {
 
     render() {
         return (
-             <div className="container">
-                <h1 className="text-center">Weekly</h1>
+            <div className="container">
+                <h1 className="text-center">Popular</h1>
 
                 <div className="row">
                     {
@@ -38,4 +44,4 @@ class Weekly extends React.Component {
     }
 }
 
-export default Weekly;
+export default Popular;
